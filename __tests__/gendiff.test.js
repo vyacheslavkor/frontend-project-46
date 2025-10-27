@@ -16,6 +16,8 @@ const formats_files = [
   ['stylish', 'file1.yaml', 'file2.yaml'],
   ['plain', 'file1.json', 'file2.json'],
   ['plain', 'file1.yaml', 'file2.yaml'],
+  ['json', 'file1.json', 'file2.json'],
+  ['json', 'file1.yaml', 'file2.yaml'],
 ]
 
 test.each(formats_files)('%s %s %s', (format, firstFileName, secondFileName) => {
