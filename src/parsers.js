@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { cwd } from 'node:process'
 import path from 'node:path'
+import yaml from 'js-yaml'
 
 export const parse = (firstFile, secondFile) => {
   const firstFileFormat = getFileFormat(firstFile)
@@ -21,6 +22,7 @@ export const parse = (firstFile, secondFile) => {
 const parseByFormat = (content, format) => {
   const map = {
     json: content => JSON.parse(content),
+    yaml: content => yaml.load(content),
   }
 
   return map[format](content)
@@ -40,7 +42,7 @@ const getFileFormat = (file) => {
 }
 
 const checkFilesFormat = (firstFileFormat, secondFileFormat) => {
-  const supportedFormats = new Set(['json'])
+  const supportedFormats = new Set(['json', 'yaml'])
 
   if (!supportedFormats.has(firstFileFormat) || !supportedFormats.has(secondFileFormat)) {
     return false
