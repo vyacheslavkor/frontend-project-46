@@ -23,6 +23,7 @@ const parseByFormat = (content, format) => {
   const map = {
     json: content => JSON.parse(content),
     yaml: content => yaml.load(content),
+    yml: content => yaml.load(content),
   }
 
   return map[format](content)
@@ -42,7 +43,7 @@ const getFileFormat = (file) => {
 }
 
 const checkFilesFormat = (firstFileFormat, secondFileFormat) => {
-  const supportedFormats = new Set(['json', 'yaml'])
+  const supportedFormats = new Set(['json', 'yaml', 'yml'])
 
   if (!supportedFormats.has(firstFileFormat) || !supportedFormats.has(secondFileFormat)) {
     return false
