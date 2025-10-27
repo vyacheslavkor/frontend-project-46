@@ -148,7 +148,7 @@ const toString = (value) => {
   return String(value).trim()
 }
 
-export default (first, second, format = 'stylish') => {
+export default (first, second) => {
   const diff = makeDiff(first, second)
 
   return stylish(diff)
