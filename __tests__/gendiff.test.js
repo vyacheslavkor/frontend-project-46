@@ -1,10 +1,10 @@
 import { expect, test } from '@jest/globals'
-import genDiff from '../src/differ.js'
 import path from 'path'
 import { parse } from '../src/parsers.js'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
 import getFormatter from '../src/formatters/index.js'
+import gendiff from '../src/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -26,9 +26,8 @@ test.each(formatsFiles)('%s %s %s', (format, firstFileName, secondFileName) => {
   const secondFile = getFixturePath(secondFileName)
 
   const expected = readFile(`${format}.txt`).trim()
-  const parsedData = parse(firstFile, secondFile)
 
-  const diff = genDiff(parsedData.firstFile, parsedData.secondFile, format)
+  const diff = gendiff(firstFile, secondFile, format)
 
   expect(diff).toBe(expected)
 },
