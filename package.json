@@ -1,0 +1,23 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/vyacheslavkor/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/vyacheslavkor/frontend-project-46/actions)",
+  "main": "gendiff.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Viacheslav Korolev",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "gendiff": "gendiff.js"
+  },
+  "devDependencies": {
+    "@eslint/create-config": "^1.10.0",
+    "@stylistic/eslint-plugin": "^5.5.0",
+    "eslint": "^9.38.0"
+  },
+  "dependencies": {
+    "commander": "^14.0.2"
+  }
+}
