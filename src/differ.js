@@ -84,7 +84,7 @@ const stylish = (diff) => {
       let valueToShow
       let isObject = false
 
-      if (!(val && typeof val === 'object' && 'state' in val)) {
+      if (!val || typeof val !== 'object' || !('state' in val)) {
         valueToShow = val
       }
       else {
@@ -102,8 +102,6 @@ const stylish = (diff) => {
             break
           case 'updated':
             break
-          default:
-            valueToShow = null
         }
       }
 
@@ -116,13 +114,11 @@ const stylish = (diff) => {
           case 'updated': {
             const lineBefore = `${getIndent(val)}- ${key}: ${iter(val.oldValue, depth + 1)}`
             const lineAfter = `${getIndent(val)}+ ${key}: ${iter(val.newValue, depth + 1)}`
-            return [lineBefore, lineAfter]
+            return `${lineBefore}\n${lineAfter}`
           }
           case 'nested':
             return `${getIndent(val)}${key}: ${iter(valueToShow, depth + 1)}`
           case 'unchanged':
-            return `${getIndent(val)}${key}: ${iter(valueToShow, depth + 1)}`
-          default:
             return `${getIndent(val)}${key}: ${iter(valueToShow, depth + 1)}`
         }
       }
@@ -148,8 +144,10 @@ const toString = (value) => {
   return String(value).trim()
 }
 
-export default (first, second) => {
+const genDiff = (first, second) => {
   const diff = makeDiff(first, second)
 
   return stylish(diff)
 }
+
+export default genDiff

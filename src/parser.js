@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { cwd } from 'node:process'
-import path from 'path'
+import path from 'node:path'
 
 export const parse = (firstFile, secondFile) => {
   const firstFileFormat = getFileFormat(firstFile)
@@ -40,9 +40,9 @@ const getFileFormat = (file) => {
 }
 
 const checkFilesFormat = (firstFileFormat, secondFileFormat) => {
-  const supportedFormats = ['json']
+  const supportedFormats = new Set(['json']);
 
-  if (!supportedFormats.includes(firstFileFormat) || !supportedFormats.includes(secondFileFormat)) {
+  if (!supportedFormats.has(firstFileFormat) || !supportedFormats.has(secondFileFormat)) {
     return false
   }
 
