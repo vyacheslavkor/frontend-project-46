@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "commander": "^14.0.2",
+    "eslint-plugin-jest": "^29.0.1",
     "globals": "^16.4.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
