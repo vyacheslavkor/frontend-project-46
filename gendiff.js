@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
 import { parse } from './src/parser.js'
+import genDiff from './src/differ.js'
 
 const program = new Command()
 program.description('Compares two configuration files and shows a difference.')
@@ -10,9 +11,9 @@ program.description('Compares two configuration files and shows a difference.')
   .action((filepath1, filepath2) => {
     try {
       const parsedData = parse(filepath1, filepath2)
-      // console.log('Options:', program.opts())
+      const diff = genDiff(parsedData.firstFile, parsedData.secondFile)
 
-      console.log(parsedData)
+      console.log(diff)
     }
     catch (e) {
       console.log(e.message)
