@@ -52,7 +52,7 @@ const getListKeys = (first, second) => {
   return _.sortBy(allKeys)
 }
 
-const genDiff = (first, second, format = 'stylish') => {
+const genDiff = (first, second, format) => {
   const diff = makeDiff(first, second)
   const formatter = getFormatter(format)
 

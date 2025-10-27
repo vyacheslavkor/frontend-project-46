@@ -26,10 +26,6 @@ export const toString = (value) => {
     return 'null'
   }
 
-  if (value === undefined) {
-    return 'undefined'
-  }
-
   return String(value).trim()
 }
 

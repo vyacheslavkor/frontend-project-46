@@ -6,10 +6,6 @@ const plain = (diff) => {
     const keys = getKeys(diff)
 
     const lines = _.reduce(keys, (result, key) => {
-      if (!_.isObject(diff[key]) || !_.has(diff[key], 'state')) {
-        return result
-      }
-
       const currentElement = diff[key]
       const state = currentElement.state
       let diffElement = []

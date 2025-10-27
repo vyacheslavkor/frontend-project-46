@@ -49,5 +49,7 @@ const checkFilesFormat = (firstFileFormat, secondFileFormat) => {
     return false
   }
 
-  return firstFileFormat === secondFileFormat
+  const isYml = format => format === 'yml' || format === 'yaml'
+
+  return (firstFileFormat === secondFileFormat) || (isYml(firstFileFormat) && isYml(secondFileFormat))
 }
