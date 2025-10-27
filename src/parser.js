@@ -40,7 +40,7 @@ const getFileFormat = (file) => {
 }
 
 const checkFilesFormat = (firstFileFormat, secondFileFormat) => {
-  const supportedFormats = new Set(['json']);
+  const supportedFormats = new Set(['json'])
 
   if (!supportedFormats.has(firstFileFormat) || !supportedFormats.has(secondFileFormat)) {
     return false
